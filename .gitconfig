@@ -1,0 +1,39 @@
+[alias]
+  a =  add .
+  b = branch
+  c = commit
+  co = checkout
+  cob = checkout -b
+  cl = clone
+  cm = commit -m
+  f = fetch
+  i = init
+  l = log --graph --oneline --decorate --all
+  last = log -3 HEAD --decorate
+  m = merge
+  p = push
+  pl = pull
+  rh = reset --hard
+  s = status -sbu
+  st = stash
+  ro = rebase origin/main -i
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
+[core]
+	editor = code --wait
+[user]
+	name = Arsam Sarabi
+	email = arsamsarabi@me.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
