@@ -1,12 +1,21 @@
 source ~/.config/.env_vars
 
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH=~/.npm-global/bin:$PATH
+
 # ----------------------------------------------------------------
 # || ZSH AUTOSUGGESTIONS
 # ----------------------------------------------------------------
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#247c5c,bg=#ade0cd,underline"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#57a177,bg=#e2f4ea,underline"
 
 plugins=(
   git
@@ -16,37 +25,47 @@ plugins=(
   brew
 )
 
+MOO="$HOME/N25/"
+PLAYGROUND="$HOME/Playground/"
+
 # ----------------------------------------------------------------
 # || ALIASES
 # ----------------------------------------------------------------
-MOO="${HOME}/moo/"
-PLAYGROUND="${HOME}/Playground/"
 
-alias config="nvim $HOME/.zshrc"
-alias reload="source $HOME/.zshrc"
-
+# --- General
 alias ..="cd .."
 alias ...="cd ../.."
 alias rmf="rm -rf"
-alias g=git
-alias python=python3
-alias nv=nvim
 alias clr="clear"
+alias play="cd $PLAYGROUND && ls"
+alias work="cd $MOO && ls"
+alias empty="git commit --allow-empty -m \"Empty-Commit\""
+alias got="got.sh" 
 
-# ---------
-# || MOO
-# ---------
-alias moo="cd ${MOO} && ls"
-alias moono="cd ${MOO}/ecommerce-website-merch"
+# --- Lazygit
+alias lg="lazygit"
 
-# ---------
-# || Play
-# ---------
-alias play="cd ${PLAYGROUND} && ls"
+# --- Neovim
+alias nv="nvim"
+function vim_config {
+ cd $HOME/.config/nvim
+ nv
+}
 
-# ---------
-# || pnpm
-# ---------
+# --- tmux
+alias tm="tmux"
+alias tma="tm attach"
+alias tms="tm source $HOME/config/tmux/tmux.conf"
+function tmux_config {
+  cd $HOME/.config/tmux
+  lv
+}
+
+# --- ZSH
+alias config="lv $HOME/.zshrc"
+alias reload="source $HOME/.zshrc"
+
+# --- PNPM
 alias pn="pnpm"
 alias pni="pn install"
 alias pnid="pni --dev"
@@ -55,91 +74,63 @@ alias pnu="pn uninstall"
 alias pnd="pn dev"
 alias pns="pn start"
 
-# ---------
-# || Init
-# ---------
-alias nxt="yarn create next-app --typescript"
+# --- YouTube
+alias ytd="youtube-dl"
 
-# ---------
-# || Tmux
-# ---------
-alias tx="tmux"
+# --- Python
+alias py="python3"
+alias pi="pip3"
 
-# ---------
-# || LSD
-# ---------
+# --- movies-cli
+alias mvi="movie"
+
+# --- dNote
+alias nb="dnote"
+
+# --- howdoi
+alias how="howdoi"
+
+# --- lsd
 alias ls="lsd"
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls --tree"
 
-# ---------
-# || ZELLIJ
-# ---------
+# --- Turborepo
+alias trepo="pnpm dlx create-turbo@latest" 
+
+# --- dotfiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dtf="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias dtfa="dtf add"
+alias dtfc="dtf commit -m"
+alias dtfp="dtf push"
+
+# --- ZELLIJ
 alias ze="zellij"
-alias zel='ze list-sessions'
-alias zea='ze attach'
+alias zel="ze list-sessions"
+alias zea="ze attach"
 
-# ---------
-# || LazyGit
-# ---------
-alias lg="lazygit"
-
-# ---------
-# || Misc
-# ---------
+# --- ZOXIDE
 alias z="zoxide"
-alias empty="git commit --allow-empty -m \"Empty-Commit\""
-alias got="got.sh" 
 
-# ----------------------------------------------------------------
-# || TERRAFORM
-# ----------------------------------------------------------------
+# --- GIT
+alias g="git"
+
+# --- PYTHON
+alias python="python3"
+
+# --- TERRAFORM
 alias tr="terraform"
 alias trp="tr plan"
 alias tra="tr apply"
 alias trf="tr fmt"
 
 # ----------------------------------------------------------------
-# || DOTFILE
-# ----------------------------------------------------------------
-alias dtf="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias dtfa="dtf add"
-alias dtfc="dtf commit -m"
-alias dtfp="dtf push"
-
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-
-# ----------------------------------------------------------------
-# || FUNCTIONS
-# ----------------------------------------------------------------
-function mktw {
-  yad tailwindcss@latest postcss@latest autoprefixer@latest && npx tailwindcss init -p
-}
-
-# ----------------------------------------------------------------
 # || etc.
 # ----------------------------------------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# ----------------------------------------------------------------
-# || NVM
-# ----------------------------------------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# ----------------------------------------------------------------
-# PNPM 
-# ----------------------------------------------------------------
-export PNPM_HOME="/Users/arsamsarabi/Library/pnpm"
-
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
