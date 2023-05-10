@@ -25,8 +25,8 @@ plugins=(
   brew
 )
 
-MOO="$HOME/N25/"
-PLAYGROUND="$HOME/Playground/"
+MOO="$HOME/MOO/"
+PLAYGROUND="$HOME/Sandbox/"
 
 # ----------------------------------------------------------------
 # || ALIASES
