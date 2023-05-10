@@ -1,4 +1,4 @@
-source ~/.config/.env_vars
+source $HOME/.config/.env_vars
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
@@ -62,7 +62,7 @@ function tmux_config {
 }
 
 # --- ZSH
-alias config="lv $HOME/.zshrc"
+alias config="nv $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 
 # --- PNPM
