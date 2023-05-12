@@ -1,12 +1,12 @@
 return {
   -- add gruvbox
-  { "catppuccin/nvim", name = "catppuccin" },
+  { "Mofiqul/dracula.nvim" },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "dracula-soft",
     },
   },
 }
