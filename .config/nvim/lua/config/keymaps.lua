@@ -151,3 +151,62 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- ---------------------------------------------------
 -- END DEFAULT KEYMAPS
 -- ---------------------------------------------------
+
+-- ---------------------------------------------------
+-- CARBON NOW
+-- ---------------------------------------------------
+map("v", "<leader>cn", ":CarbonNow<CR>", { silent = true })
+-- ---------------------------------------------------
+  -- END CARBON NOW
+  -- ---------------------------------------------------
+
+-- ---------------------------------------------------
+-- BARBAR
+-- ---------------------------------------------------
+local barbarOpts = {
+  silent = true
+}
+-- Move to previous/next
+map("n", "<A-,>", "<Cmd>BufferPrevious<CR>")
+map('n', '<A-.>', '<Cmd>BufferNext<CR>', barbarOpts)
+-- Re-order to previous/next
+map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', barbarOpts)
+map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', barbarOpts)
+-- Goto buffer in position...
+map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', barbarOpts)
+map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', barbarOpts)
+map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', barbarOpts)
+map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', barbarOpts)
+map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', barbarOpts)
+map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', barbarOpts)
+map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', barbarOpts)
+map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', barbarOpts)
+map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', barbarOpts)
+map('n', '<A-0>', '<Cmd>BufferLast<CR>', barbarOpts)
+-- Pin/unpin buffer
+map('n', '<A-p>', '<Cmd>BufferPin<CR>', barbarOpts)
+-- Close buffer
+map('n', '<A-c>', '<Cmd>BufferClose<CR>', barbarOpts)
+-- Wipeout buffer
+--                 :BufferWipeout
+-- Close commands
+--                 :BufferCloseAllButCurrent
+--                 :BufferCloseAllButPinned
+--                 :BufferCloseAllButCurrentOrPinned
+--                 :BufferCloseBuffersLeft
+--                 :BufferCloseBuffersRight
+-- Magic buffer-picking mode
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', barbarOpts)
+-- Sort automatically by...
+map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', barbarOpts)
+map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', barbarOpts)
+map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', barbarOpts)
+map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbarOpts)
+-- ---------------------------------------------------
+-- END BARBAR
+-- ---------------------------------------------------
+
+
+-- MY KEYBINDS
+map('n', '<Space>t', '<CMD>lua require("FTerm").toggle()<CR>')
+map('t', '<Space>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
