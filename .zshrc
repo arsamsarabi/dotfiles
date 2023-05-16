@@ -127,6 +127,9 @@ alias trp="tr plan"
 alias tra="tr apply"
 alias trf="tr fmt"
 
+# --- TLDR
+alias tldrf="tldr --list | fzf --preview 'tldr {1} --color=always' --preview-window=right,70% | xargs tldr"
+
 # ----------------------------------------------------------------
 # || etc.
 # ----------------------------------------------------------------
