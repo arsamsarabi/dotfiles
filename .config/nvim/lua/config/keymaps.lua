@@ -208,5 +208,5 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', barbarOpts)
 
 
 -- MY KEYBINDS
-map('n', '<Space>t', '<CMD>lua require("FTerm").toggle()<CR>')
-map('t', '<Space>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+map('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
+map('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
