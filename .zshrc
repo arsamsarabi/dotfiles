@@ -1,13 +1,22 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 source $HOME/.config/.env_vars
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
+export ZSH="$HOME/.oh-my-zsh"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=~/.npm-global/bin:$PATH
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # ----------------------------------------------------------------
 # || ZSH AUTOSUGGESTIONS
@@ -18,11 +27,10 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#57a177,bg=#e2f4ea,underline"
 
 plugins=(
+  zsh-syntax-highlighting
   git
   zsh-autosuggestions
-  poetry
   z
-  brew
 )
 
 MOO="$HOME/MOO/"
@@ -137,3 +145,7 @@ alias tldrf="tldr --list | fzf --preview 'tldr {1} --color=always' --preview-win
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
