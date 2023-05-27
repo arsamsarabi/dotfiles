@@ -1,6 +1,5 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  version = false, -- last release is way too old and doesn't work on Windows
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
@@ -24,6 +23,7 @@ return {
         end
       end,
     },
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   keys = {
     { "<c-space>", desc = "Increment selection" },
@@ -31,27 +31,45 @@ return {
   },
   ---@type TSConfig
   opts = {
-    auto_install = true,
-    sync_install = false,
     highlight = { enable = true },
     indent = { enable = true },
     ensure_installed = {
+      "astro",
       "bash",
+      "comment",
+      "css",
+      "dockerfile",
+      "diff",
+      "git_config",
+      "git_rebase",
+      "gitattributes",
+      "gitcommit",
+      "gitignore",
+      "go",
+      "graphql",
+      "hcl",
       "html",
+      "http",
       "javascript",
       "json",
+      "json5",
+      "jsonc",
       "lua",
       "luadoc",
       "luap",
       "markdown",
       "markdown_inline",
+      "prisma",
       "python",
-      "query",
       "regex",
+      "rust",
+      "scss",
+      "svelte",
       "tsx",
       "typescript",
       "vim",
       "vimdoc",
+      "vue",
       "yaml",
     },
     incremental_selection = {

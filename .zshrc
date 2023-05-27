@@ -18,6 +18,8 @@ export PATH=~/.npm-global/bin:$PATH
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # ----------------------------------------------------------------
 # || ZSH AUTOSUGGESTIONS
 # ----------------------------------------------------------------

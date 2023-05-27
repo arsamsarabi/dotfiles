@@ -1,14 +1,22 @@
 window:
  dynamic_title: true
- dynamic_padding: false
- decorations: none
+ dynamic_padding: true
+ decorations: 'Buttonless'
  opacity: 0.95
  startup_mode: Maximized
  decorations_theme_variant: Dark
+ position:
+   x: 0
+   y: 0 
+ dimensions:
+  columns: 0
+  lines: 0   
  padding: 
   x: 0
   y: 0
- dynamic_padding: false
+ offset:
+  x: 1
+  y: 0  
 
 font:
   normal:

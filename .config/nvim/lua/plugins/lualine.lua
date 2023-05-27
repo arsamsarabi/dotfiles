@@ -1,7 +1,9 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  config = function()
-    require("lualine").setup {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+  event = "VeryLazy",
+  opts = function()
+    return {
       options = {
         icons_enabled = true,
         theme = 'seoul256',
@@ -39,10 +41,7 @@ return {
       tabline = {},
       winbar = {},
       inactive_winbar = {},
-      extensions = {
-        'neo-tree',
-        'lazy'
-      }
+      extensions = {}
     }
   end,
 }
