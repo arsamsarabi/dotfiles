@@ -45,7 +45,7 @@ alias reload="source $HOME/.zshrc"
 
 # --- PNPM
 alias pn="pnpm"
-alias pni="pn add"
+alias pni="pn install"
 alias pna="pn add"
 alias pnid="pna --dev"
 alias pnad="pna --dev"
@@ -53,6 +53,11 @@ alias pnip="pna --peer"
 alias pnap="pna --peer"
 alias pnu="pn uninstall"
 alias pnd="pn dev"
+
+# --- Bun
+alias buni="bun install"
+alias bund="bun add"
+alias bunb="bun build"
 
 # --- lsd
 alias ls="lsd"
@@ -114,3 +119,10 @@ function moo {
   pnpm $project run $command
 }
 # -------------------------
+
+# bun completions
+[ -s "/Users/arsamsarabi/.bun/_bun" ] && source "/Users/arsamsarabi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
