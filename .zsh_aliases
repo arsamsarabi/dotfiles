@@ -1,0 +1,109 @@
+SANDBOX="$HOME/Documents/Sandbox/"
+WORK="$HOME/Documents/Work/"
+YOUTUBE="$HOME/Documents/YouTube/"
+CODI="$SANDBOX/codi-js"
+
+# --- Cursor
+alias cr="cursor"
+
+# --- GIT
+alias g="git"
+alias gin="git init && git add -A && git commit -m '✨ here we go again'"
+alias empty="git commit --allow-empty -m \"Empty commit\""
+alias glog="git log main -25 --pretty=format:'%C(yellow)%h%C(reset) - %C(blue)%s%C(reset) %C(green)(%cd)%C(reset)' --date=short"
+
+# --- PYTHON
+alias python="python3"
+
+# --- General
+alias ..="cd .. && la"
+alias ...="cd ../.. && la"
+alias rmf="rm -rf"
+alias clr="clear"
+alias play="cd $SANDBOX && ls"
+alias work="cd $WORK && ls"
+alias teach="cd $YOUTUBE && ls"
+
+# --- ZSH
+alias config="code $HOME/.zshrc"
+alias reload="source $HOME/.zshrc"
+
+# --- PNPM
+alias pn="pnpm"
+alias pni="pn install"
+alias pna="pn add"
+alias pnu="pn uninstall"
+alias pnd="pn dev"
+alias pnt="pn test"
+
+# --- Bun
+alias buni="bun install"
+alias buna="bun add"
+alias bunb="bun build"
+alias bund="bun run dev"
+
+# --- lsd
+alias ls="lsd"
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+# alias lt="ls --tree"
+
+# --- dotfiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias dtf="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias dtfa="dtf add"
+alias dtfc="dtf commit -m"
+alias dtfp="dtf push"
+
+# -------------------------
+# GOT ---------------------
+alias got='~/.got/got.sh'
+# -------------------------
+
+# ONI
+alias codi='cd $CODI && ls -la'
+alias codiv='cd $CODI && pnd'
+alias rock='ngrok http 5001 --host-header="localhost:5001" --url https://grub-wondrous-cleanly.ngrok-free.app'
+
+
+# Utility functions
+# ------------------------------------
+
+# Recursively delete node_modules in a folder
+function clean_node_modules() {
+  local target="${1:-.}"
+
+  echo "Searching for node_modules folders under: $target"
+  read "confirm?Are you sure you want to recursively delete all node_modules folders (top-down)? [y/N] "
+
+  if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    # Use find and sort by path depth ascending (shortest path = highest in tree)
+    find "$target" -type d -name "node_modules" \
+      | awk '{ print length, $0 }' \
+      | sort -n \
+      | cut -d' ' -f2- \
+      | while read -r dir; do
+          echo "Deleting: $dir"
+          rm -rf "$dir"
+        done
+    echo "✅ All node_modules folders deleted top-down."
+  else
+    echo "❌ Operation cancelled."
+  fi
+}
+
+function glog_branch() {
+  local branch="${1:-main}"
+  local limit="${2:-25}"
+  
+  git log $branch -$limit --pretty=format:'%C(yellow)%h%C(reset) - %C(blue)%s%C(reset) %C(green)(%cd)%C(reset)' --date=short
+}
+
+function yz() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

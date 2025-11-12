@@ -1,0 +1,53 @@
+export ZSH="$HOME/.oh-my-zsh"
+export PATH=~/.npm-global/bin:$PATH
+
+# bun completions
+[ -s "/Users/asarabi/.bun/_bun" ] && source "/Users/asarabi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+autoload -Uz compinit
+compinit
+
+ZSH_THEME=""
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# pnpm
+export PNPM_HOME="/Users/asarabi/Library/pnpm"
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# ----------------------------------------------------------------
+# || ZSH AUTOSUGGESTIONS
+# ----------------------------------------------------------------
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+plugins=(
+  zsh-syntax-highlighting
+  git
+  zsh-autosuggestions
+  z
+)
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/asarabi/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"

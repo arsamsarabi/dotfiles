@@ -1,0 +1,38 @@
+[general]
+working_directory = "~/"
+import = [
+  # uncomment the flavour you want below:
+  # "~/.config/alacritty/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[env]
+FOO = "BAR"
+
+[window]
+dimensions = { columns = 100, lines = 50 }
+position = { x = 0, y = 0 }
+padding = { x = 0, y = 0 }
+dynamic_padding = false
+decorations = "None"
+opacity = 0.75
+blur = true
+startup_mode = "Maximized"
+title = "Arsam's sandbox"
+dynamic_title = false
+decorations_theme_variant = "Dark"
+
+[font]
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+bold = { family = "JetBrainsMono NF", style = "Bold" }
+italic = { family = "JetBrainsMono NF", style = "Italic" }
+bold_italic = { family = "JetBrainsMono NF", style = "Bold Italic" }
+size = 18.0
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }

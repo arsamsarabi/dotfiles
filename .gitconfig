@@ -1,0 +1,72 @@
+[alias]
+  a =  add .
+  b = branch
+  c = commit
+  co = checkout
+  cob = checkout -b
+  com = checkout main 
+  cl = clone
+  cm = commit -m
+  f = fetch
+  fo = fetch origin main
+  fu = fetch upstream main
+  i = init
+  l = log --graph --oneline --decorate --all
+  last = log -3 HEAD --decorate
+  m = merge
+  p = push
+  pl = pull
+  rh = reset --hard
+  s = status -sbu
+  st = stash
+  ro = rebase origin/main -i
+  ru = rebase upstream/main -i
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
+  di = diff
+	dic = diff --cached
+	lg = log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+
+[core]
+	editor = cursor --wait
+  ignorecase = false
+[user]
+	name = Arsam Sarabi
+	email = asarabi@oni.bio
+[user]
+	name = Arsam Sarabi
+	email = arsamsarabi@me.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[github]
+	user = arsamoni
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[credential "https://git-rba.hackerrank.com"]
+	provider = generic
