@@ -1,7 +1,6 @@
-SANDBOX="$HOME/Documents/Sandbox/"
-WORK="$HOME/Documents/Work/"
-YOUTUBE="$HOME/Documents/YouTube/"
-CODI="$SANDBOX/codi-js"
+SANDBOX="$HOME/Sandbox/"
+WORK="$HOME/Work/"
+CODI="$WORK/codi-js"
 
 # --- Cursor
 alias cr="cursor"
@@ -22,7 +21,6 @@ alias rmf="rm -rf"
 alias clr="clear"
 alias play="cd $SANDBOX && ls"
 alias work="cd $WORK && ls"
-alias teach="cd $YOUTUBE && ls"
 
 # --- ZSH
 alias config="code $HOME/.zshrc"
@@ -66,6 +64,8 @@ alias codi='cd $CODI && ls -la'
 alias codiv='cd $CODI && pnd'
 alias rock='ngrok http 5001 --host-header="localhost:5001" --url https://grub-wondrous-cleanly.ngrok-free.app'
 
+# fzf
+alias fzt="fzf --tmux center"
 
 # Utility functions
 # ------------------------------------
